@@ -7,17 +7,50 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="img/flowers.png" type="image/x-icon">
     <title>Flowers</title>
-</head>
+    <style>
+        /* Mengatur elemen agar berada di tengah halaman */
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+        }
 
+        .greetings, .description {
+            text-align: center;
+        }
+
+        /* Styling untuk teks "HAI" dan "ADINDA" */
+        .greetings span {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #333;
+            margin: 0 0.1rem;
+        }
+
+        /* Styling untuk tombol link */
+        .greetings .no-underline {
+            text-decoration: none; /* Menghilangkan garis bawah pada link */
+            font-size: 2.5rem;
+            color: #ff69b4; /* Warna pink */
+        }
+
+        .description span {
+            font-size: 1.5rem;
+            color: #888;
+        }
+    </style>
+</head>
 
 <body>
     <div class="greetings">
         <span>H</span>
         <span>A</span>
         <span>I</span>
-       
         <br>
-        
         <span>
             <a href="flower.html" class="no-underline">💝</a>
         </span>
@@ -32,10 +65,6 @@
     <div class="description">
         <span>....</span>
     </div>
-<style>.no-underline {
-    text-decoration: none; /* Menghilangkan garis bawah pada link */
-}
-</style>    
- 
 </body>
 </html>
+
