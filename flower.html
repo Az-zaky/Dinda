@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" href="img/flowers.png" type="image/x-icon">
-    <title>flowers</title>
+    <title>Flowers</title>
 </head>
 <body class="container">
     <!-- Pesan Ulang Tahun -->
@@ -15,29 +15,28 @@
 
     <!-- Musik Latar -->
     <audio id="background-music" loop autoplay>
-      <source src="soft-birthday.mp3" type="audio/mpeg">
-      Browser Anda tidak mendukung elemen audio.
-  </audio>
-  
+        <source src="soft-birthday.mp3" type="audio/mpeg">
+        Browser Anda tidak mendukung elemen audio.
+    </audio>
+
     <style>
         .birthday-message {
             position: absolute;
-            top: 10px; /* Sesuaikan posisinya */
+            top: 10px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 14px; /* Ukuran teks */
-            color: #FF69B4; /* Warna teks, sesuaikan sesuai keinginan */
+            font-size: 14px;
+            color: #FF69B4;
             font-weight: bold;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Efek bayangan teks */
-            z-index: 10; /* Agar berada di atas elemen lain */
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            z-index: 10;
         }
-    </style>
- <style>
         .card {
             max-width: 600px;
             margin: 50px auto;
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
         }
         .card-header {
             background-color: #f7c6f7;
@@ -49,7 +48,10 @@
             font-size: 16px;
             color: #4a4a4a;
             line-height: 1.6;
-            padding: 30px;
+            padding: 20px;
+            max-height: 120px;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
         }
         .card-footer {
             background-color: #f7c6f7;
@@ -57,56 +59,72 @@
             color: #6a1b9a;
             font-size: 14px;
         }
+        .read-more {
+            text-align: center;
+            color: #6a1b9a;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+        }
     </style>
+
     <script>
-      window.addEventListener('load', function() {
-          var audio = document.getElementById('background-music');
+      document.addEventListener('DOMContentLoaded', function() {
+          const readMoreButton = document.querySelector('.read-more');
+          const cardBody = document.querySelector('.card-body');
           
-          // Coba putar audio saat halaman dimuat
-          audio.play().then(function() {
-              console.log("Audio diputar secara otomatis");
-          }).catch(function(error) {
-              console.log("Auto-play mungkin diblokir oleh browser:", error);
-              
-              // Buat tombol play jika autoplay diblokir
-              var playButton = document.createElement("button");
+          readMoreButton.addEventListener('click', function() {
+              if (cardBody.style.maxHeight) {
+                  cardBody.style.maxHeight = null;
+                  readMoreButton.innerText = "Baca Selengkapnya";
+              } else {
+                  cardBody.style.maxHeight = cardBody.scrollHeight + "px";
+                  readMoreButton.innerText = "Tutup";
+              }
+          });
+
+          // Coba auto-play audio
+          const audio = document.getElementById('background-music');
+          audio.play().catch(function() {
+              const playButton = document.createElement("button");
               playButton.innerText = "Play Music";
               playButton.style.position = "absolute";
+              playButton.style.top = "10px";
+              playButton.style.left = "50%";
               playButton.style.transform = "translateX(-50%)";
-              playButton.style.padding = "10px 20px";
-              playButton.style.fontSize = "16px";
-              playButton.style.cursor = "pointer";
               playButton.style.zIndex = "10";
               document.body.appendChild(playButton);
 
-              // Event untuk memutar audio saat tombol diklik
               playButton.addEventListener('click', function() {
                   audio.play();
-                  playButton.remove(); // Hapus tombol setelah audio diputar
+                  playButton.remove();
               });
           });
       });
     </script>
-    
-      <div class="card-container">
+
+    <!-- Konten Kartu -->
+    <div class="card-container">
         <div class="card">
             <div class="card-header">
                 Selamat Ulang Tahun, Adek Sayang!
             </div>
             <div class="card-body">
-              <p>Selamat ulang tahun yang ke-21, adek sayang. Di hari yang spesial ini, mas cuma mau mengingatkan betapa berharganya adek di hidup mas. Terima kasih karena selama ini adek nggak cuma jadi kesayangan mas, tapi juga jadi sahabat terbaik mas, selalu jadi orang pertama yang menghibur mas kalau mas lagi sedih, selalu sabar, dan paham tentang mas dalam hal-hal kecil yang mungkin orang lain nggak lihat. Kehadiran adek merupakan hadiah dari Tuhan yang luar biasa buat mas.</p>
-        
-              <p>Mas sadar, mungkin mas nggak bisa selalu ada setiap waktu seperti dulu, tapi percayalah, mas selalu memperhatikan adek, mendoakan yang terbaik, dan berharap semua kebahagiaan menyertai setiap langkah adek.</p>
-              
-              <p>Semoga di usia yang baru ini, setiap langkah adek dipenuhi keberanian dan keyakinan untuk terus maju, mengejar mimpi-mimpi yang selama ini adek perjuangkan dan adek ceritakan dengan mas. Mas bangga banget sama adek, tetaplah jadi sosok luar biasa yang mas kenal. Selamat ulang tahun, sayang. Di mana pun adek berada, mas akan selalu ingat dan sayang.</p>
+                <p>Selamat ulang tahun yang ke-21, adek sayang. Di hari yang spesial ini, mas cuma mau mengingatkan betapa berharganya adek di hidup mas. Terima kasih karena selama ini adek nggak cuma jadi kesayangan mas, tapi juga jadi sahabat terbaik mas, selalu jadi orang pertama yang menghibur mas kalau mas lagi sedih, selalu sabar, dan paham tentang mas dalam hal-hal kecil yang mungkin orang lain nggak lihat. Kehadiran adek merupakan hadiah dari Tuhan yang luar biasa buat mas.</p>
+                
+                <p>Mas sadar, mungkin mas nggak bisa selalu ada setiap waktu seperti dulu, tapi percayalah, mas selalu memperhatikan adek, mendoakan yang terbaik, dan berharap semua kebahagiaan menyertai setiap langkah adek.</p>
+                
+                <p>Semoga di usia yang baru ini, setiap langkah adek dipenuhi keberanian dan keyakinan untuk terus maju, mengejar mimpi-mimpi yang selama ini adek perjuangkan dan adek ceritakan dengan mas. Mas bangga banget sama adek, tetaplah jadi sosok luar biasa yang mas kenal. Selamat ulang tahun, sayang. Di mana pun adek berada, mas akan selalu ingat dan sayang.</p>
             </div>
+            <div class="read-more">Baca Selengkapnya</div>
             <div class="card-footer">
                 ❤️ Dengan penuh kasih, Mas ❤️
             </div>
         </div>
     </div>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 <body class="container">
     <div class="night"></div>
     <div class="flowers">
