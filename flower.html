@@ -5,98 +5,54 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
-    <!-- <link rel="stylesheet" href="css/style.css"> -->
     <link rel="icon" href="img/flowers.png" type="image/x-icon">
     <title>flowers</title>
+    <style>
+        /* Pesan Ulang Tahun */
+        .birthday-message {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 14px;
+            color: #FF69B4;
+            font-weight: bold;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            z-index: 10;
+        }
+
+        /* Tombol Lihat Ucapan */
+        .btn-cantik {
+            text-decoration: none;
+            color: #ffffff;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            background-image: linear-gradient(135deg, #ff7e5f, #feb47b);
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        .btn-cantik:hover {
+            background-image: linear-gradient(135deg, #feb47b, #ff7e5f);
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+            transform: scale(1.05);
+        }
+    </style>
 </head>
+
 <body class="container">
     <!-- Pesan Ulang Tahun -->
     <div class="birthday-message">Selamat Ulang Tahun ke 21 Sayang</div>
 
     <!-- Musik Latar -->
     <audio id="background-music" loop autoplay>
-      <source src="soft-birthday.mp3" type="audio/mpeg">
-      Browser Anda tidak mendukung elemen audio.
-  </audio>
-  
-    <style>
-        .birthday-message {
-            position: absolute;
-            top: 10px; /* Sesuaikan posisinya */
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 24px; /* Ukuran teks */
-            color: #FF69B4; /* Warna teks, sesuaikan sesuai keinginan */
-            font-weight: bold;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Efek bayangan teks */
-            z-index: 10; /* Agar berada di atas elemen lain */
-        }
-    </style>
+        <source src="soft-birthday.mp3" type="audio/mpeg">
+        Browser Anda tidak mendukung elemen audio.
+    </audio>
 
-    <div class="night"></div>
-    <div class="flowers">
-        <!-- Struktur elemen bunga lainnya -->
-    </div>
-    <script>
-      window.addEventListener('load', function() {
-          var audio = document.getElementById('background-music');
-          
-          // Coba putar audio saat halaman dimuat
-          audio.play().then(function() {
-              console.log("Audio diputar secara otomatis");
-          }).catch(function(error) {
-              console.log("Auto-play mungkin diblokir oleh browser:", error);
-              
-              // Buat tombol play jika autoplay diblokir
-              var playButton = document.createElement("button");
-              playButton.innerText = "Play Music";
-              playButton.style.position = "absolute";
-              playButton.style.top = "50px";
-              playButton.style.left = "50%";
-              playButton.style.transform = "translateX(-50%)";
-              playButton.style.padding = "10px 20px";
-              playButton.style.fontSize = "16px";
-              playButton.style.cursor = "pointer";
-              playButton.style.zIndex = "10";
-              document.body.appendChild(playButton);
-
-              // Event untuk memutar audio saat tombol diklik
-              playButton.addEventListener('click', function() {
-                  audio.play();
-                  playButton.remove(); // Hapus tombol setelah audio diputar
-              });
-          });
-      });
-    </script>
+    <!-- Tombol Lihat Ucapan -->
     <a href="ucapan.html" class="btn-cantik">Lihat Ucapan</a>
-    <style>body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f5;
-}
-
-.btn-cantik {
-    text-decoration: none;
-    color: #ffffff;
-    padding: 15px 30px;
-    border-radius: 30px;
-    font-size: 18px;
-    font-weight: bold;
-    background-image: linear-gradient(135deg, #ff7e5f, #feb47b);
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-}
-
-.btn-cantik:hover {
-    background-image: linear-gradient(135deg, #feb47b, #ff7e5f);
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
-    transform: scale(1.05);
-}
-</style>
     
 <body class="container">
     <div class="night"></div>
@@ -397,6 +353,31 @@
         </div>
       </div>
     </div>
+       <script>
+        window.addEventListener('load', function() {
+            var audio = document.getElementById('background-music');
+            audio.play().catch(function(error) {
+                console.log("Auto-play mungkin diblokir oleh browser:", error);
+                var playButton = document.createElement("button");
+                playButton.innerText = "Play Music";
+                playButton.style.position = "absolute";
+                playButton.style.top = "50px";
+                playButton.style.left = "50%";
+                playButton.style.transform = "translateX(-50%)";
+                playButton.style.padding = "10px 20px";
+                playButton.style.fontSize = "16px";
+                playButton.style.cursor = "pointer";
+                playButton.style.zIndex = "10";
+                document.body.appendChild(playButton);
+
+                playButton.addEventListener('click', function() {
+                    audio.play();
+                    playButton.remove();
+                });
+            });
+        });
+    </script>
+
     <script src="main.js"></script>
     
 
